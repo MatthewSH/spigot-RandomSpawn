@@ -66,7 +66,7 @@ public class RandomSpawn extends JavaPlugin {
 			if(debug)
 				logger.info("Registering sign event listener");
 			
-			getInstance().getServer().getPluginManager().registerEvents(new SignListener(), getInstance());
+			getInstance().getServer().getPluginManager().registerEvents(new SignListener(debug), getInstance());
 		}
 	}
 }

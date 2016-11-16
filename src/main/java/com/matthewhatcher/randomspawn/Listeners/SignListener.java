@@ -14,6 +14,11 @@ import com.matthewhatcher.randomspawn.Utils.TeleportUtils;
 import net.md_5.bungee.api.ChatColor;
 
 public class SignListener implements Listener {
+	boolean debug = false;
+	
+	public SignListener(boolean debug) {
+		this.debug = debug;
+	}
 	
 	@EventHandler
 	public void onSignCreate(SignChangeEvent e) {
@@ -31,7 +36,14 @@ public class SignListener implements Listener {
 		if(e.getAction() == Action.RIGHT_CLICK_BLOCK && e.hasBlock() && (e.getClickedBlock().getState() instanceof Sign)) {
 			Sign s = (Sign) e.getClickedBlock().getState();
 			
-			if(s.getLine(0).equals(ChatColor.BOLD + "" + ChatColor.GREEN + "[Random Spawn]"))
+			if(debug) {
+				RandomSpawn.logger.info(e.getPlayer().getName() + " is interacting with a sign...checking to see if it's ours.");
+				RandomSpawn.logger.info("The sign's first line is: " + s.getLine(0));
+			}
+			
+			if(s.getLine(0).equalsIgnoreCase(ChatColor.GREEN + "[Random Spawn]"))
+				if(debug)
+					RandomSpawn.logger.info("It's our sign. Let's get moving.");
 				TeleportUtils.teleport(e.getPlayer());
 		}
 	}

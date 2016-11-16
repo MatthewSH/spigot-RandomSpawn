@@ -5,7 +5,7 @@
 
     <!-- Plugin Information -->
     <!-- Name, Description, and URL are used in plugin.yml -->
-    <name>Random Spawn</name>
+    <name>RandomSpawn</name>
     <url>https://github.com/MatthewSH/spigot-RandomSpawn</url>
 
     <developers>
