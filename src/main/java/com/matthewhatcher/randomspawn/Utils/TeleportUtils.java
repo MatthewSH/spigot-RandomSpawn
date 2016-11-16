@@ -11,7 +11,11 @@ import com.matthewhatcher.randomspawn.RandomSpawn;
 
 public class TeleportUtils {
 	public static void teleport(Player p) {
+		if(RandomSpawn.getInstance().getConfig().getBoolean("debug"))
+			RandomSpawn.logger.info("Teleporting " + p.getName());
+		
 		p.teleport(randomLocation(p.getWorld()));
+		MessageUtils.send(p, "You have been teleported to a random location.");
 	}
 	
 	public static Location randomLocation(World w) {

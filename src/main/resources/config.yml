@@ -11,5 +11,9 @@ onjoin: false # Every time someone joins, they're teleported.
 onrespawn: false # Every time someone respawns, they're teleported.
 
 signs: true # Use signs to transport players also.
+sign-message: # Message to be displayed on new signs (DOES NOT AFFECT ALREADY CREATED SIGNS). Use & for formatting codes.
+  line-1: "&bTeleport to"
+  line-2: "&ba safe"
+  line-3: "&blocation"
 
 debug: false # Leave to false
