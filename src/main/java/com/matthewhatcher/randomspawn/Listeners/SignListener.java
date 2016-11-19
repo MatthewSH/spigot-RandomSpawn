@@ -41,10 +41,11 @@ public class SignListener implements Listener {
 				RandomSpawn.logger.info("The sign's first line is: " + s.getLine(0));
 			}
 			
-			if(s.getLine(0).equalsIgnoreCase(ChatColor.GREEN + "[Random Spawn]"))
+			if(s.getLine(0).equalsIgnoreCase(ChatColor.GREEN + "[Random Spawn]")) {
 				if(debug)
 					RandomSpawn.logger.info("It's our sign. Let's get moving.");
 				TeleportUtils.teleport(e.getPlayer());
+			}
 		}
 	}
 }

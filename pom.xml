@@ -107,6 +107,6 @@
 	
     <groupId>com.matthewhatcher</groupId>
     <artifactId>RandomSpawn</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <description>Teleport your players to a different location in the world.</description>
 </project>
