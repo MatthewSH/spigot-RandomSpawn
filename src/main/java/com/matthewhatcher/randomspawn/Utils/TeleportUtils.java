@@ -2,6 +2,7 @@ package com.matthewhatcher.randomspawn.Utils;
 
 import java.util.Random;
 
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -24,8 +25,17 @@ public class TeleportUtils {
 		
 		int x = c.getInt("coods.x.min") + r.nextInt(c.getInt("coords.x.max") - c.getInt("coords.x.min") + 1);
 		int z = c.getInt("coods.z.min") + r.nextInt(c.getInt("coords.z.max") - c.getInt("coords.z.min") + 1);
-		int y = w.getHighestBlockYAt(x, z);
+		int y = 0;
 		
-		return new Location(w, x, y, z);
+		Location loc = new Location(w, x, y, z);
+		Chunk chunk = loc.getChunk();
+		
+		if(!chunk.isLoaded()) {
+			chunk.load(true);
+		}
+		
+		loc.setY(w.getHighestBlockYAt(loc));
+		
+		return loc;
 	}
 }
