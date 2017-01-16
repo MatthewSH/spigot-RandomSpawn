@@ -4,7 +4,9 @@ import java.util.Random;
 
 import org.bukkit.Chunk;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
@@ -30,11 +32,18 @@ public class TeleportUtils {
 		Location loc = new Location(w, x, y, z);
 		Chunk chunk = loc.getChunk();
 		
+		
 		if(!chunk.isLoaded()) {
 			chunk.load(true);
 		}
 		
 		loc.setY(w.getHighestBlockYAt(loc));
+		
+		Block under = w.getBlockAt(loc);
+		
+		if(under.getType() == Material.LAVA || under.getType() == Material.STATIONARY_LAVA) {
+			under.setType(Material.STONE);
+		}
 		
 		return loc;
 	}
