@@ -5,3 +5,6 @@ author: ${author}
 website: ${url}
 main: ${mainClass}
 depend: ${dependencies}
+permissions:
+  randomspawn.makesign:
+    default: op

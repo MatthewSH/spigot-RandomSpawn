@@ -23,11 +23,13 @@ public class SignListener implements Listener {
 	@EventHandler
 	public void onSignCreate(SignChangeEvent e) {
 		if(e.getLine(0).equalsIgnoreCase("randomspawn")) {
-			FileConfiguration c = RandomSpawn.getInstance().getConfig();
-			e.setLine(0, "§l§a[Random Spawn]");
-			e.setLine(1, c.getString("sign-messages.line-1").replaceAll("&", "§"));
-			e.setLine(2, c.getString("sign-messages.line-2").replaceAll("&", "§"));
-			e.setLine(3, c.getString("sign-messages.line-3").replaceAll("&", "§"));
+			if(e.getPlayer().hasPermission("randomspawn.makesign")) {
+				FileConfiguration c = RandomSpawn.getInstance().getConfig();
+				e.setLine(0, "[Random Spawn]");
+				e.setLine(1, c.getString("sign-messages.line-1").replaceAll("&", "§"));
+				e.setLine(2, c.getString("sign-messages.line-2").replaceAll("&", "§"));
+				e.setLine(3, c.getString("sign-messages.line-3").replaceAll("&", "§"));
+			}
 		}
 	}
 	
@@ -41,7 +43,7 @@ public class SignListener implements Listener {
 				RandomSpawn.logger.info("The sign's first line is: " + s.getLine(0));
 			}
 			
-			if(s.getLine(0).equalsIgnoreCase(ChatColor.GREEN + "[Random Spawn]")) {
+			if(s.getLine(0).equalsIgnoreCase("[Random Spawn]")) {
 				if(debug)
 					RandomSpawn.logger.info("It's our sign. Let's get moving.");
 				TeleportUtils.teleport(e.getPlayer());
