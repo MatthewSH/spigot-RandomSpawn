@@ -6,6 +6,8 @@ coords: # The coordinate ranges to teleport players in between.
     max: 10000
     min: -10000
 
+chat-prefix: "&c[Random Spawn] &b"
+display-messages: true # Display [RandomSpawn] related messsages. Disable this to disable all messages sent to the player when they are teleported (permission and op related messages not included).
 on-first-join: true # When a player first joins, they're teleported to a random spawn.
 onjoin: false # Every time someone joins, they're teleported.
 onrespawn: false # Every time someone respawns, they're teleported.
