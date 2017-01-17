@@ -19,11 +19,27 @@ Every time someone joins, they get taken to a random spawn.
 ### On Respawn (`onrespawn`)
 Every time someone respawns they get taken to a random point.
 
+### Use Beds (`use-beds`)
+If `true`, beds will be used as a spawn point when `onrespawn` is active. If `false`, they will respawn at a random location.
+
+### Use Commands (`use-commands`)
+If `true`, it will register the `/randomspawn` command.
+
 ### Signs (`signs`)
 Allows the use of the random spawn signs. When creating a sign on the first line type  `randomspawn` and the sign will change to a Random Spawn sign with your text (`line-1`, `line-2`, `line-3`) on it.
 
 ### Debugging (`debugging`)
 If you're having issues, you can turn on `debug` and it can log out a bit more information.
+
+## Permissionns
+### `randomspawn.command`
+Allows use of the `/randomspawn` command. Is on by default.
+
+### `randomspawn.teleportothers`
+Gives the ability to teleport others using `/randomspawn player`. Defaults to OP.
+
+### `randomspawn.makesign`
+Allows people to make the random spawn signs. Defaults to OP.
 
 ## Donate
 [![Donate](https://az743702.vo.msecnd.net/cdn/kofi1.png?v=f)](https://ko-fi.com/636QU7F12V5F)
