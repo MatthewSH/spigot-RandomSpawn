@@ -11,6 +11,7 @@ import com.matthewhatcher.randomspawn.Listeners.JoinListener;
 import com.matthewhatcher.randomspawn.Listeners.RespawnListener;
 import com.matthewhatcher.randomspawn.Listeners.SignListener;
 import com.matthewhatcher.randomspawn.Utils.FileUtils;
+import com.matthewhatcher.randomspawn.Utils.MessageUtils;
 
 public class RandomSpawn extends JavaPlugin {
 	public FileUtils fileUtils;
@@ -32,6 +33,8 @@ public class RandomSpawn extends JavaPlugin {
 		
 		this.registerListeners();
 		this.registerCommands();
+		
+		MessageUtils.setData();
 		
 		super.onEnable();
 	}
