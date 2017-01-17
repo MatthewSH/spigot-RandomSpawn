@@ -10,6 +10,7 @@ on-first-join: true # When a player first joins, they're teleported to a random 
 onjoin: false # Every time someone joins, they're teleported.
 onrespawn: false # Every time someone respawns, they're teleported.
 use-beds: true # Should we use beds as a spawn point? If true, we will.
+use-command: true # Should we register the /randomspawn command? If true, we will.
 
 signs: true # Use signs to transport players also.
 sign-messages: # Message to be displayed on new signs (DOES NOT AFFECT ALREADY CREATED SIGNS). Use & for formatting codes.
