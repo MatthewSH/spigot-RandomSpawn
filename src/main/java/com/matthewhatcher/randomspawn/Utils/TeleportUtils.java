@@ -1,6 +1,6 @@
 package com.matthewhatcher.randomspawn.Utils;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.bukkit.Chunk;
 import org.bukkit.Location;
@@ -23,10 +23,9 @@ public class TeleportUtils {
 	
 	public static Location randomLocation(World w) {
 		FileConfiguration c = RandomSpawn.getInstance().getConfig();
-		Random r = new Random();
 		
-		int x = c.getInt("coods.x.min") + r.nextInt(c.getInt("coords.x.max") - c.getInt("coords.x.min") + 1);
-		int z = c.getInt("coods.z.min") + r.nextInt(c.getInt("coords.z.max") - c.getInt("coords.z.min") + 1);
+		int x = generateInt(c.getInt("coords.x.min"), c.getInt("coords.x.max"));
+		int z = generateInt(c.getInt("coords.z.min"), c.getInt("coords.z.max"));
 		int y = 0;
 		
 		Location loc = new Location(w, x, y, z);
@@ -43,8 +42,13 @@ public class TeleportUtils {
 		
 		if(under.getType() == Material.LAVA || under.getType() == Material.STATIONARY_LAVA) {
 			under.setType(Material.STONE);
+			loc.setY(loc.getY() + 1);
 		}
 		
 		return loc;
+	}
+	
+	public static int generateInt(int min, int max) {
+		return ThreadLocalRandom.current().nextInt(min, max + 1);
 	}
 }
