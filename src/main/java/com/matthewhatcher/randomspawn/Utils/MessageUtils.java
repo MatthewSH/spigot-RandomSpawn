@@ -9,7 +9,7 @@ public class MessageUtils {
 	private static String prefix = "&c[Random Spawn] &b";
 	private static boolean displayMessages = true;
 	
-	public MessageUtils() {
+	public static void setData() {
 		MessageUtils.prefix = RandomSpawn.getInstance().getConfig().getString("chat-prefix", "&c[Random Spawn] &b");
 		MessageUtils.displayMessages = RandomSpawn.getInstance().getConfig().getBoolean("display-messages", true);
 	}
