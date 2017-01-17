@@ -5,6 +5,16 @@ author: ${author}
 website: ${url}
 main: ${mainClass}
 depend: ${dependencies}
+commands:
+  randomspawn:
+    description: 'Allows you to randomly teleport somewhere.'
 permissions:
+  randomspawn.command:
+    default: true
+    description: 'Ability to use the random spawn command.'
+  randomspawn.teleportothers:
+    default: op
+    description: 'Ability to teleport others.'
   randomspawn.makesign:
     default: op
+    description: 'Ability to make a random spawn sign.'
