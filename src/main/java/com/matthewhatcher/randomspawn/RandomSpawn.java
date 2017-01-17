@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.matthewhatcher.randomspawn.Commands.CommandRandomSpawn;
 import com.matthewhatcher.randomspawn.Listeners.FirstJoinListener;
 import com.matthewhatcher.randomspawn.Listeners.JoinListener;
 import com.matthewhatcher.randomspawn.Listeners.RespawnListener;
@@ -30,8 +31,21 @@ public class RandomSpawn extends JavaPlugin {
 		fileUtils.firstRun();
 		
 		this.registerListeners();
+		this.registerCommands();
 		
 		super.onEnable();
+	}
+	
+	private void registerCommands() {
+		FileConfiguration c = getInstance().getConfig();
+		boolean debug = c.getBoolean("debug");
+		
+		if(c.getBoolean("use-command")) {
+			if(debug)
+				logger.info("Registering the random spawn command.");
+			
+			getInstance().getCommand("randomspawn").setExecutor(new CommandRandomSpawn());
+		}
 	}
 	
 	private void registerListeners() {
