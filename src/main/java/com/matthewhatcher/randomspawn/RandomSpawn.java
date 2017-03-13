@@ -31,12 +31,22 @@ public class RandomSpawn extends JavaPlugin {
 		fileUtils = new FileUtils();
 		fileUtils.firstRun();
 		
+		this.checkConfig();
 		this.registerListeners();
 		this.registerCommands();
 		
 		MessageUtils.setData();
 		
 		super.onEnable();
+	}
+	
+	private void checkConfig() {
+		int thisVersion = 1;
+		if(!getConfig().contains("config-verison") || getConfig().getInt("config-version") < thisVersion) {
+			getLogger().severe("You do not have the updated configuration. Please rename your configuration file (config.yml) and restart the server.");
+			getLogger().severe("Disabling the plugin to prevent errors.");
+			getPluginLoader().disablePlugin(this);
+		}
 	}
 	
 	private void registerCommands() {
