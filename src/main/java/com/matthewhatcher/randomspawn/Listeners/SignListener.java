@@ -11,8 +11,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import com.matthewhatcher.randomspawn.RandomSpawn;
 import com.matthewhatcher.randomspawn.Utils.TeleportUtils;
 
-import net.md_5.bungee.api.ChatColor;
-
 public class SignListener implements Listener {
 	boolean debug = false;
 	
@@ -22,9 +20,9 @@ public class SignListener implements Listener {
 	
 	@EventHandler
 	public void onSignCreate(SignChangeEvent e) {
-		if(e.getLine(0).equalsIgnoreCase("randomspawn")) {
+		FileConfiguration c = RandomSpawn.getInstance().getConfig();
+		if(e.getLine(0).equalsIgnoreCase(c.getString("sign-trigger", "randomspawn"))) {
 			if(e.getPlayer().hasPermission("randomspawn.makesign")) {
-				FileConfiguration c = RandomSpawn.getInstance().getConfig();
 				e.setLine(0, "[Random Spawn]");
 				e.setLine(1, c.getString("sign-messages.line-1").replaceAll("&", "§"));
 				e.setLine(2, c.getString("sign-messages.line-2").replaceAll("&", "§"));
