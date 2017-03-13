@@ -42,7 +42,7 @@ public class RandomSpawn extends JavaPlugin {
 	
 	private void checkConfig() {
 		int thisVersion = 1;
-		if(!getConfig().contains("config-verison") || getConfig().getInt("config-version") < thisVersion) {
+		if(!getConfig().contains("config-version") || getConfig().getInt("config-version") < thisVersion) {
 			getLogger().severe("You do not have the updated configuration. Please rename your configuration file (config.yml) and restart the server.");
 			getLogger().severe("Disabling the plugin to prevent errors.");
 			getPluginLoader().disablePlugin(this);
