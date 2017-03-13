@@ -15,9 +15,17 @@ use-beds: true # Should we use beds as a spawn point? If true, we will.
 use-command: true # Should we register the /randomspawn command? If true, we will.
 
 signs: true # Use signs to transport players also.
+sign-trigger: "[randomspawn]"
 sign-messages: # Message to be displayed on new signs (DOES NOT AFFECT ALREADY CREATED SIGNS). Use & for formatting codes.
   line-1: "&bTeleport to"
   line-2: "&ba safe"
   line-3: "&blocation"
 
+world-blacklist:
+  fallback-world: world # If this is not set, or not a valid world. We'll fallback on the default server world.
+  use-as-whitelist: false # If you want to only use the below worlds as a whitelist
+  worlds: # List of worlds Random Spawn will not work in (or work in depending on the boolean above)
+    - ANameOfAWorld
+
 debug: false # Leave to false
+config-version: 1 # DO NOT TOUCH!
