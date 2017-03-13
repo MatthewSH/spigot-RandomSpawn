@@ -15,6 +15,7 @@ import com.matthewhatcher.randomspawn.Utils.MessageUtils;
 
 public class RandomSpawn extends JavaPlugin {
 	public FileUtils fileUtils;
+	private boolean unload = false;
 	
 	public static Logger logger;
 	private static RandomSpawn instance;
@@ -32,10 +33,13 @@ public class RandomSpawn extends JavaPlugin {
 		fileUtils.firstRun();
 		
 		this.checkConfig();
-		this.registerListeners();
-		this.registerCommands();
 		
-		MessageUtils.setData();
+		if(!this.unload) {
+			this.registerListeners();
+			this.registerCommands();
+			
+			MessageUtils.setData();
+		}
 		
 		super.onEnable();
 	}
